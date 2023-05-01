@@ -1,0 +1,4 @@
+E:\AiSHD\FT1d\FT1d\x64\Debug\FT1d.vcxproj.AssemblyReference.cache
+E:\AiSHD\FT1d\FT1d\x64\Debug\FT1d.vcxproj.SuggestedBindingRedirects.cache
+E:\AiSHD\FT1d\FT1d\x64\Debug\FT1d.MyForm.resources
+E:\AiSHD\FT1d\FT1d\x64\Debug\FT1d.vcxproj.GenerateResource.cache
