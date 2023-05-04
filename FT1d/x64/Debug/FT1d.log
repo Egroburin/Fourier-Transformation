@@ -1,6 +1,6 @@
 ﻿  MyForm.cpp
 E:\AiSHD\FT1d\FT1d\MyForm.cpp(154,18): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-E:\AiSHD\FT1d\FT1d\MyForm.cpp(264,13): warning C4101: a: неиспользованная локальная переменная
+E:\AiSHD\FT1d\FT1d\MyForm.cpp(262,13): warning C4101: a: неиспользованная локальная переменная
 E:\AiSHD\FT1d\FT1d\MyForm.cpp(198): warning C4715: GetImageSize: значение возвращается не при всех путях выполнения
   MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   FT1d.vcxproj -> E:\AiSHD\FT1d\x64\Debug\FT1d.exe

@@ -44,8 +44,9 @@ namespace FT1d {
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart3;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button6;
 
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 
 
@@ -63,16 +64,16 @@ namespace FT1d {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea28 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend28 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series37 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series38 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea29 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend29 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series39 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea30 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend30 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series40 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea7 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea8 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series11 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea9 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series12 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -82,33 +83,32 @@ namespace FT1d {
 			this->chart3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			chartArea28->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea28);
-			legend28->Name = L"Legend1";
-			this->chart1->Legends->Add(legend28);
+			chartArea7->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea7);
+			legend7->Name = L"Legend1";
+			this->chart1->Legends->Add(legend7);
 			this->chart1->Location = System::Drawing::Point(2, 1);
 			this->chart1->Name = L"chart1";
-			series37->ChartArea = L"ChartArea1";
-			series37->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series37->Legend = L"Legend1";
-			series37->Name = L"Series1";
-			series38->ChartArea = L"ChartArea1";
-			series38->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
-			series38->LabelBorderWidth = 3;
-			series38->Legend = L"Legend1";
-			series38->MarkerBorderWidth = 3;
-			series38->Name = L"Series2";
-			this->chart1->Series->Add(series37);
-			this->chart1->Series->Add(series38);
+			series9->ChartArea = L"ChartArea1";
+			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series9->Legend = L"Legend1";
+			series9->Name = L"Series1";
+			series10->ChartArea = L"ChartArea1";
+			series10->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
+			series10->LabelBorderWidth = 3;
+			series10->Legend = L"Legend1";
+			series10->MarkerBorderWidth = 3;
+			series10->Name = L"Series2";
+			this->chart1->Series->Add(series9);
+			this->chart1->Series->Add(series10);
 			this->chart1->Size = System::Drawing::Size(343, 244);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -145,17 +145,17 @@ namespace FT1d {
 			// 
 			// chart2
 			// 
-			chartArea29->Name = L"ChartArea1";
-			this->chart2->ChartAreas->Add(chartArea29);
-			legend29->Name = L"Legend1";
-			this->chart2->Legends->Add(legend29);
+			chartArea8->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea8);
+			legend8->Name = L"Legend1";
+			this->chart2->Legends->Add(legend8);
 			this->chart2->Location = System::Drawing::Point(339, 1);
 			this->chart2->Name = L"chart2";
-			series39->ChartArea = L"ChartArea1";
-			series39->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series39->Legend = L"Legend1";
-			series39->Name = L"Series1";
-			this->chart2->Series->Add(series39);
+			series11->ChartArea = L"ChartArea1";
+			series11->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series11->Legend = L"Legend1";
+			series11->Name = L"Series1";
+			this->chart2->Series->Add(series11);
 			this->chart2->Size = System::Drawing::Size(343, 244);
 			this->chart2->TabIndex = 4;
 			this->chart2->Text = L"chart2";
@@ -169,17 +169,17 @@ namespace FT1d {
 			// 
 			// chart3
 			// 
-			chartArea30->Name = L"ChartArea1";
-			this->chart3->ChartAreas->Add(chartArea30);
-			legend30->Name = L"Legend1";
-			this->chart3->Legends->Add(legend30);
+			chartArea9->Name = L"ChartArea1";
+			this->chart3->ChartAreas->Add(chartArea9);
+			legend9->Name = L"Legend1";
+			this->chart3->Legends->Add(legend9);
 			this->chart3->Location = System::Drawing::Point(2, 251);
 			this->chart3->Name = L"chart3";
-			series40->ChartArea = L"ChartArea1";
-			series40->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series40->Legend = L"Legend1";
-			series40->Name = L"Series1";
-			this->chart3->Series->Add(series40);
+			series12->ChartArea = L"ChartArea1";
+			series12->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series12->Legend = L"Legend1";
+			series12->Name = L"Series1";
+			this->chart3->Series->Add(series12);
 			this->chart3->Size = System::Drawing::Size(680, 364);
 			this->chart3->TabIndex = 6;
 			this->chart3->Text = L"chart3";
@@ -205,22 +205,22 @@ namespace FT1d {
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
-			// pictureBox1
+			// button6
 			// 
-			this->pictureBox1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox1->Location = System::Drawing::Point(717, 415);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(375, 355);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
-			this->pictureBox1->TabIndex = 10;
-			this->pictureBox1->TabStop = false;
+			this->button6->Location = System::Drawing::Point(717, 436);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(192, 59);
+			this->button6->TabIndex = 9;
+			this->button6->Text = L"Фурье преоббразование";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1354, 755);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->chart3);
@@ -235,7 +235,6 @@ namespace FT1d {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -248,5 +247,6 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void chart3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
