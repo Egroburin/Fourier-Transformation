@@ -162,7 +162,7 @@ System::Void FT1d::MyForm::button4_Click(System::Object^ sender, System::EventAr
         t1 += step;
         }
 
-   // this->chart1->Series[1]->Points->AddXY(IntegralX / 5, IntegralY / 5);
+  
     FourierFunc[i] = IntegralY / 5;
     i++;
     l1 = l1 + lstep;
@@ -190,14 +190,14 @@ int GetImageSize(String^ filename, int cond)
         return img->Width;
     };
 }
-int** LoadImageToArray(String^ filename)
+double** LoadImageToArray(String^ filename)
 {
 
     Bitmap^ img = gcnew Bitmap(filename);
-    int** arr = new int *[img->Height];
+    double** arr = new double *[img->Height];
     for (int i = 0; i < img->Height; i++)
     {
-        arr[i] = new int[img->Width];
+        arr[i] = new double[img->Width];
     }
     for (int i = 0; i < img->Height; i++)
     {
@@ -211,10 +211,7 @@ int** LoadImageToArray(String^ filename)
     }
     return arr;
 }
-
-
-
-void SaveAsBitmap(int** data, String^ filename, int m, int n)
+void SaveAsBitmap(double** data, String^ filename, int m, int n)
 {
 
     int width = m;
@@ -226,7 +223,7 @@ void SaveAsBitmap(int** data, String^ filename, int m, int n)
         for (int y = 0; y < height; y++)
         {
             int value = data[x][y];
-            Color c = Color::FromArgb(value, value, value);
+            Color c = Color::FromArgb( value,  value,  value);
             bmp->SetPixel(x, y, c);
         }
     }
@@ -238,55 +235,82 @@ void SaveAsBitmap(int** data, String^ filename, int m, int n)
 
 
 
-int* FT1d(int* arr, int w)
+double* FuT1d(double* arr, int w)
 {
-    double t1 = 0;
-    double t2 = 10;
-
-    double l1 = 0;
-    double l2 = 10;
-
-
-
-    double IntegralX = 0;
+    int t1 = 0;
+    int l1 = -w/2;
+    int l2 = w/2-1;
     double IntegralY = 0;
-
-
-    double lstep = 0.01;
-    double step = 0.001;
-    int FreqLong = l2 / lstep;
-
     double* Point = new double[2];
-    double* MassCentre = new double[2];
-    double* FourierFunc = new double[FreqLong];
+    double* FourierFunc = new double[w];
     int i = 0;
 
     while (l1 <= l2)
     {
-        IntegralX = 0;
         IntegralY = 0;
-        while (t1 <= t2) {
-            Point = CalculateCircleMatr(t1, CalculateCirclePoint(t1, l1));
-            IntegralX = IntegralX + Point[0] * step;
-            IntegralY = IntegralY + Point[1] * step;
-            t1 += step;
+        while (t1 <= w) {
+            Point = CalculateCircleMatr(arr[t1], CalculateCirclePoint(t1, l1));
+            IntegralY = IntegralY + Point[1];
+            t1++;
         }
-        
-        FourierFunc[i] = IntegralY / 5;
+        FourierFunc[i] = Math::Round(IntegralY/512);
+    
         i++;
-        l1 = l1 + lstep;
+        l1++;
         t1 = 0;
     }
  
-  
+    return FourierFunc;
 }
 
-int** FT2d(String^ filename, int h, int w)
+double** FT2d(String^ filename, int h, int w)
 {
-    int** matr;
+    double** matr;
+    double* B = new double[w];
     matr = LoadImageToArray(filename);
+    for (int i = 0; i < h; i++)
+    {
+        
+        for (int j = 0; j < w; j++)
+        {
+            B[j] = matr[i][j];
+        }
+        B = FuT1d(B, w);
+        for (int j = 0; j < w; j++)
+        {
+            if (B[j] > 0)
+            {
+                matr[i][j] =  (B[j] * 2)-1;
+            }
+            else
+            {
+               matr[i][j] = Math::Abs(B[j]);
+            }
+        }
+    }
+  
+    double* C = new double[h];
 
-
+    for (int i = 0; i < w; i++)
+    {
+       
+        for (int j = 0; j < h; j++)
+        {
+            C[j] = matr[j][i];
+        }
+        C = FuT1d(C, h);
+        for (int j = 0; j < h; j++)
+        {
+            if (C[j] > 0)
+            {
+                matr[j][i] =  (C[j] * 2)-1;
+            }
+            else
+            {
+                matr[j][i] = Math::Abs(C[j]);
+            }
+        }
+    }
 
 
     return matr;
@@ -297,16 +321,16 @@ System::Void FT1d::MyForm::button5_Click(System::Object^ sender, System::EventAr
     int height = GetImageSize("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg", 0);
     int width = GetImageSize("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg", 1);
 
-    //Bitmap^ bmp = gcnew Bitmap(height, width);
-    //Graphics^ g = Graphics::FromImage(bmp); // холст для рисования
-    //pictureBox1->Image = bmp; // закрепление к pictureBox
-    //Bitmap^ image1; // фото загрузки в pictureBox
-    //image1 = gcnew Bitmap("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg"); // инициализация файл с фото
-    //pictureBox1->Image = image1;
+    Bitmap^ bmp = gcnew Bitmap(height, width);
+    Graphics^ g = Graphics::FromImage(bmp); // холст для рисования
+    pictureBox1->Image = bmp; // закрепление к pictureBox
+    Bitmap^ image1; // фото загрузки в pictureBox
+    image1 = gcnew Bitmap("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg"); // инициализация файл с фото
+    pictureBox1->Image = image1;
 
 
 
-    int** matr = LoadImageToArray("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg");
+    double** matr = LoadImageToArray("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg");
     String^ a = nullptr;
     SaveAsBitmap(matr, "E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg", height,width);
 
@@ -315,5 +339,36 @@ System::Void FT1d::MyForm::button5_Click(System::Object^ sender, System::EventAr
 
 System::Void FT1d::MyForm::button6_Click(System::Object^ sender, System::EventArgs^ e)
 {
+    int height = GetImageSize("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg", 0);
+    int width = GetImageSize("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg", 1);
+
+    double** matr = FT2d("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg", height, width);
+    SaveAsBitmap(matr, "E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg", height, width);
+
+    //String^ a = nullptr;
+    /*for (int i = 0; i < height; i++)
+    {
+
+        for (int j = 0; j < width; j++)
+        {
+            a = a + " "  + matr[i][j];
+        }
+        
+       
+    }*/
+ //   int** newmatr = FT2d("E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg", height, width);
+ //   SaveAsBitmap(newmatr, "E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited2.jpg", height, width);
+
+
+
+//    SaveAsBitmap(matr, "E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg", height, width);
+
+
+    Bitmap^ bmp = gcnew Bitmap(height, width);
+    Graphics^ g = Graphics::FromImage(bmp); // холст для рисования
+    pictureBox1->Image = bmp; // закрепление к pictureBox
+    Bitmap^ image1; // фото загрузки в pictureBox
+    image1 = gcnew Bitmap("E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg"); // инициализация файл с фото
+    pictureBox1->Image = image1;
     return System::Void();
 }
