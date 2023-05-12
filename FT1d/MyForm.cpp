@@ -223,7 +223,7 @@ void SaveAsBitmap(double** data, String^ filename, int m, int n)
         for (int y = 0; y < height; y++)
         {
             int value = data[x][y];
-            Color c = Color::FromArgb( value,  value,  value);
+            Color c = Color::FromArgb(  value,   value, value);
             bmp->SetPixel(x, y, c);
         }
     }
@@ -235,62 +235,85 @@ void SaveAsBitmap(double** data, String^ filename, int m, int n)
 
 
 
+//double* FuT1d(double* arr, int w)
+//{
+//    int t1 = 0;
+//    int l1 = -w/2;
+//    int l2 = w/2-1;
+//    double IntegralY = 0;
+//    double* Point = new double[2];
+//    double* FourierFunc = new double[w];
+//    int i = 0;
+//
+//    while (l1 <= l2)
+//    {
+//        IntegralY = 0;
+//        while (t1 <= w) {
+//            Point = CalculateCircleMatr(arr[t1], CalculateCirclePoint(t1, l1));
+//            IntegralY = IntegralY + Point[1];
+//            t1++;
+//        }
+//        FourierFunc[i] = Math::Round(IntegralY/ (w * 1.2));
+//    
+//        i++;
+//        l1++;
+//        t1 = 0;
+//    }
+// 
+//    return FourierFunc;
+//}
+
 double* FuT1d(double* arr, int w)
 {
     int t1 = 0;
-    int l1 = -w/2;
-    int l2 = w/2-1;
-    double IntegralY = 0;
-    double* Point = new double[2];
+    int l1 = -w / 2;
+    int l2 = w / 2;
+    double Integral = 0;
     double* FourierFunc = new double[w];
     int i = 0;
 
-    while (l1 <= l2)
+    for (l1 = -w / 2; l1 < l2; l1++)
     {
-        IntegralY = 0;
-        while (t1 <= w) {
-            Point = CalculateCircleMatr(arr[t1], CalculateCirclePoint(t1, l1));
-            IntegralY = IntegralY + Point[1];
-            t1++;
+        
+        Integral = 0;
+        for (t1 = 0; t1 < w;t1++) {
+            Integral = Integral + arr[t1] * Math::Sin(2 * pi * t1 * l1 / w);
         }
-        FourierFunc[i] = Math::Round(IntegralY/512);
-    
+        FourierFunc[i] = Math::Abs(Math::Round( Integral/(43))); //Math::Round(Math::Log(Math::Abs(Integral)+1,2));
+
         i++;
-        l1++;
-        t1 = 0;
     }
- 
+
     return FourierFunc;
 }
-
 double** FT2d(String^ filename, int h, int w)
 {
     double** matr;
     double* B = new double[w];
+    
     matr = LoadImageToArray(filename);
+    String^ a = nullptr;
+   
+
     for (int i = 0; i < h; i++)
     {
         
         for (int j = 0; j < w; j++)
         {
             B[j] = matr[i][j];
+
         }
         B = FuT1d(B, w);
         for (int j = 0; j < w; j++)
         {
-            if (B[j] > 0)
-            {
-                matr[i][j] =  (B[j] * 2)-1;
-            }
-            else
-            {
-               matr[i][j] = Math::Abs(B[j]);
-            }
+         //   a = a + " " + B[j];
+            matr[i][j] = B[j] ;
+          
         }
+
     }
   
     double* C = new double[h];
-
     for (int i = 0; i < w; i++)
     {
        
@@ -301,14 +324,8 @@ double** FT2d(String^ filename, int h, int w)
         C = FuT1d(C, h);
         for (int j = 0; j < h; j++)
         {
-            if (C[j] > 0)
-            {
-                matr[j][i] =  (C[j] * 2)-1;
-            }
-            else
-            {
-                matr[j][i] = Math::Abs(C[j]);
-            }
+            matr[j][i] = C[j] ;
+            
         }
     }
 
@@ -345,22 +362,9 @@ System::Void FT1d::MyForm::button6_Click(System::Object^ sender, System::EventAr
     double** matr = FT2d("E:\\AiSHD\\FT1d\\imgs\\SampleImage.jpg", height, width);
     SaveAsBitmap(matr, "E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg", height, width);
 
-    //String^ a = nullptr;
-    /*for (int i = 0; i < height; i++)
-    {
-
-        for (int j = 0; j < width; j++)
-        {
-            a = a + " "  + matr[i][j];
-        }
-        
-       
-    }*/
+   
  //   int** newmatr = FT2d("E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg", height, width);
  //   SaveAsBitmap(newmatr, "E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited2.jpg", height, width);
-
-
-
 //    SaveAsBitmap(matr, "E:\\AiSHD\\FT1d\\imgs\\SampleImageEdited.jpg", height, width);
 
 

@@ -140,7 +140,7 @@ namespace FT1d {
 			// 
 			this->button3->Location = System::Drawing::Point(688, 164);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(149, 55);
+			this->button3->Size = System::Drawing::Size(129, 55);
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"Построить изначальную функцию";
 			this->button3->UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@ namespace FT1d {
 			// 
 			this->button4->Location = System::Drawing::Point(688, 225);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(149, 55);
+			this->button4->Size = System::Drawing::Size(129, 55);
 			this->button4->TabIndex = 7;
 			this->button4->Text = L"Фурье преобразование";
 			this->button4->UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@ namespace FT1d {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(717, 353);
+			this->button5->Location = System::Drawing::Point(862, 12);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(192, 56);
 			this->button5->TabIndex = 8;
@@ -210,7 +210,7 @@ namespace FT1d {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(717, 436);
+			this->button6->Location = System::Drawing::Point(1092, 12);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(192, 59);
 			this->button6->TabIndex = 9;
@@ -220,9 +220,9 @@ namespace FT1d {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(936, 73);
+			this->pictureBox1->Location = System::Drawing::Point(830, 151);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(256, 256);
+			this->pictureBox1->Size = System::Drawing::Size(512, 512);
 			this->pictureBox1->TabIndex = 10;
 			this->pictureBox1->TabStop = false;
 			// 
